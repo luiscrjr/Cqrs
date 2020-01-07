@@ -18,7 +18,7 @@ namespace Projeto.Presentation.EventsHandlers
                 var result = $"Produto: {notification.Id}, Nome: {notification.Name}, Preço: {notification.Price} - "
                             + $"{notification.Action.ToString()} em {DateTime.Now}";
 
-                Debug.WriteLine($"");
+                Debug.WriteLine(result);
             });
         }
     }

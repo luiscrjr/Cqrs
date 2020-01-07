@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Projeto.Presentation.Infra.Contexts;
+using Projeto.Presentation.Infra.Contracts;
+using Projeto.Presentation.Infra.Repositories;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Projeto.Presentation
@@ -26,6 +32,18 @@ namespace Projeto.Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<DataContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("Aula"))
+                );
+
+            services.AddTransient<IProductRepository, ProductRepository>();
+
+            //automapper..
+            services.AddAutoMapper(typeof(Startup));
+
+            //mediator
+            services.AddMediatR(typeof(Startup));
 
             services.AddSwaggerGen(
               swagger =>
