@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Projeto.Presentation.Cache;
+using Projeto.Presentation.Configurations;
 using Projeto.Presentation.Infra.Contexts;
 using Projeto.Presentation.Infra.Contracts;
 using Projeto.Presentation.Infra.Repositories;
@@ -44,6 +46,17 @@ namespace Projeto.Presentation
 
             //mediator
             services.AddMediatR(typeof(Startup));
+
+            //MongoDB
+            var settings = new MongoDbSettings();
+            new ConfigureFromConfigurationOptions<MongoDbSettings>
+                (Configuration.GetSection("MongoDB"))
+                .Configure(settings);
+
+            services.AddSingleton(settings);
+            services.AddTransient<MongoDbContext>();
+            services.AddTransient<ProductsCache>();
+
 
             services.AddSwaggerGen(
               swagger =>

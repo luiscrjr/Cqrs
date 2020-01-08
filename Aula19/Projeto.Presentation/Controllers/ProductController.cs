@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Projeto.Presentation.Cache;
 using Projeto.Presentation.Domain.Products.Command;
 
 namespace Projeto.Presentation.Controllers
@@ -14,11 +15,13 @@ namespace Projeto.Presentation.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IMediator mediator;
+        private readonly ProductsCache cache;
 
         //construtor para injeção de dependência
-        public ProductController(IMediator mediator)
+        public ProductController(IMediator mediator, ProductsCache cache)
         {
             this.mediator = mediator;
+            this.cache = cache;
         }
 
         [HttpPost]
@@ -45,5 +48,24 @@ namespace Projeto.Presentation.Controllers
             var command = new ProductDeleteCommand { Id = id };
             return Ok(await mediator.Send(command));
         }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(cache.GetAll());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var item = cache.GetById(id);
+
+            if (item != null)
+                return Ok(item);
+            else
+                return NoContent();
+        }
+
+
     }
 }
