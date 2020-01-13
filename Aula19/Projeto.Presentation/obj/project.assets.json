@@ -13640,7 +13640,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Luis\\.nuget\\packages\\": {},
+    "C:\\Users\\LUICLJUNIOR\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13649,14 +13649,14 @@
       "projectUniqueName": "C:\\Proj\\cqrs2\\Aula19\\Projeto.Presentation\\Projeto.Presentation.csproj",
       "projectName": "Projeto.Presentation",
       "projectPath": "C:\\Proj\\cqrs2\\Aula19\\Projeto.Presentation\\Projeto.Presentation.csproj",
-      "packagesPath": "C:\\Users\\Luis\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\LUICLJUNIOR\\.nuget\\packages\\",
       "outputPath": "C:\\Proj\\cqrs2\\Aula19\\Projeto.Presentation\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Luis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LUICLJUNIOR\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
